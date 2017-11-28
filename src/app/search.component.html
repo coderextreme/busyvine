@@ -1,0 +1,21 @@
+<h2>Search either crowdfunders or crowdsourcers:</h2>
+<form id='form' method='post'>
+	<div class='row'>
+		<span class='cell'>Search:</span>
+		<span class='cell'>
+			<input type='text' name='search' id='search'>
+			<button (click)="onSubmit($event)">Submit</button>
+		</span>
+	</div>
+</form>
+<div class="table" *ngFor="let video of videoService.results">
+	<div class="row">
+		<span class="cell"><iframe width="420" height="315" frameborder="0" allowfullscreen [src]="video.src"></iframe></span>
+		<div class="table">
+			<span class="row">{{ video.json["ID"] }}</span>
+			<span class="row">{{ video.json["Title"] }}</span>
+			<span class="row">{{ video.json["Date on Link"] }}</span>
+			<span class="row">{{ video.json["Author/Orator"] }}</span>
+		</div>
+	</div>
+</div>
