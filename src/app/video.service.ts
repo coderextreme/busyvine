@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
 import { Video }  from './video';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Injectable()
 export class VideoService {
   results: Video[];
+  selectedVideo: Video = null;
   constructor (private http: HttpClient, public sanitizer: DomSanitizer) {
   /*
    this.objectsToVideos([
@@ -29,7 +30,7 @@ export class VideoService {
 
   objectsToVideos(data) {
     this.results = data.map(item => {
-      return new Video(item, this.sanitizer.bypassSecurityTrustResourceUrl);
+      return new Video(item, this.sanitizer);
     });
   }
 

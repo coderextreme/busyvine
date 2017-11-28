@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { Video } from './video';
+import { Component, Input } from '@angular/core';
 import { VideoService } from './video.service';
+import { Video } from './video';
 
 @Component({
   selector: 'app-search-display',
