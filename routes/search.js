@@ -46,8 +46,8 @@ router.post('/', function(req, res, next) {
 });
 
 var readline = require('readline');
-var google = require('googleapis');
-var googleAuth = require('google-auth-library');
+var {google} = require('googleapis');
+const OAuth2Client = google.auth.OAuth2;
 
 // If modifying these scopes, delete your previously saved credentials
 // at ~/.credentials/sheets.googleapis.com-nodejs-quickstart.json
@@ -84,8 +84,7 @@ function authorize(credentials, callback) {
   var clientSecret = credentials.installed.client_secret;
   var clientId = credentials.installed.client_id;
   var redirectUrl = credentials.installed.redirect_uris[0];
-  var auth = new googleAuth();
-  var oauth2Client = new auth.OAuth2(clientId, clientSecret, redirectUrl);
+  var oauth2Client = new OAuth2Client(clientId, clientSecret, redirectUrl);
 
   // Check if we have previously stored a token.
   fs.readFile(TOKEN_PATH, function(err, token) {
@@ -155,17 +154,17 @@ function storeToken(token) {
  * the number of videos, in the environment
  */
 function readVideos(auth) {
-  var sheets = google.sheets('v4');
+  var sheets = google.sheets({ version: 'v4', auth });
   sheets.spreadsheets.values.get({
     auth: auth,
     spreadsheetId: '1X-RnAUgRRBNnWgS9_rsg1WlxPxWm7H-GFd-nAxWf7RY',
     range: 'Sheet1',
-  }, function(err, response) {
+  }, function(err, {data}) {
     if (err) {
       console.log('The API returned an error: ' + err);
       return;
     }
-    var rows = response.values;
+    var rows = data.values;
 	  console.log(rows);
     if (rows.length == 0) {
       console.log('No data found.');
