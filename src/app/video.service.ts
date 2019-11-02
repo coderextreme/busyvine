@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
 import { Video }  from './video';
 import { DomSanitizer } from '@angular/platform-browser';
