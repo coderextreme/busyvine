@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "update": "ng update @angular/cli --migrate-only --from=8.2.13"
+    "update": "ng update @angular/cli --migrate-only --from=10.1.0"
   },
   "private": true,
   "dependencies": {
