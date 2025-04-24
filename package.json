@@ -1,6 +1,6 @@
 {
   "name": "busyvine",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "update": "ng update @angular/cli --migrate-only --from=10.1.0"
+    "update": "ng update @angular/cli --migrate-only --from=19.2.8"
   },
   "private": true,
   "dependencies": {
